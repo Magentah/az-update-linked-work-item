@@ -1,0 +1,24 @@
+name: "Manage Azure DevOps Linked Work Items"
+description: "Manage state of Azure DevOps work items linked to PRs"
+author: "magentah"
+inputs:
+  ado_domain:
+    required: true
+    description: "Domain for Azure DevOps"
+    default: "dev.azure.com"
+  ado_org:
+    description: Azure DevOps Organization
+    required: true
+  ado_project:
+    description: Azure DevOps Project
+    required: true
+  ado_pat:
+    description: Azure DevOps PAT
+    required: true
+  in_review_state:
+    description: State to update an Azure WorkItem to when a PR is linked.
+    required: true
+
+runs:
+  using: "node16"
+  main: "dist/main.js"
