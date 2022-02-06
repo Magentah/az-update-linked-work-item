@@ -50,7 +50,6 @@ async function run(): Promise<void> {
 
     console.log(`Got ${workItems.length} work items. Updating status.`);
     for (const workItem of workItems) {
-        console.log(workItem.fields);
         let patch: JsonPatchDocument = [{
             "op": "replace",
             "path": "/fields/System.State",

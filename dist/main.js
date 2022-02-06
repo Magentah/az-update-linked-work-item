@@ -53040,7 +53040,6 @@ function run() {
     let workItems = yield adoWorkItemTrackingClient.getWorkItems(workItemIds, void 0, void 0, void 0, void 0, inputVariables.azureProject);
     console.log(`Got ${workItems.length} work items. Updating status.`);
     for (const workItem of workItems) {
-      console.log(workItem.fields);
       let patch = [{
         "op": "replace",
         "path": "/fields/System.State",
