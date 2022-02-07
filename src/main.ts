@@ -73,7 +73,10 @@ function getWorkItemIds(payload: WebhookPayload): number[] {
     // Need to split as Azure APIs require just the number for work items.
     let workItemIdMatch = comment.match(/AB#\d*/);
     if (workItemIdMatch && workItemIdMatch.length > 0) {
-        workItemIds = workItemIdMatch.map((match: string): number => {
+        workItemIds = workItemIdMatch.filter((match: string): boolean => {
+            // Filter to only entries that actually have a number.
+            return !isNaN(parseInt(match.split("#")[1]));
+        }).map((match: string): number => {
             return parseInt(match.split("#")[1]);
         });
     }
